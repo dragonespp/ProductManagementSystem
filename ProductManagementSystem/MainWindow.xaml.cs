@@ -1,6 +1,9 @@
-﻿using System.Windows;
-using ProductManagementSystem.Services;
+
+﻿using ProductManagementSystem.Services;
 using ProductManagementSystem.Views;
+using System.Windows;
+
+
 
 
 namespace ProductManagementSystem
@@ -23,12 +26,14 @@ namespace ProductManagementSystem
 
         private void btnStatistics_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Модуль 'Статистика' в разработке", "Информация");
+            var statisticsWindow = new StatisticsWindow(productService);
+            statisticsWindow.ShowDialog();
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Модуль 'Поиск' в разработке", "Информация");
+            var searchWindow = new SearchWindow(productService);
+            searchWindow.ShowDialog();
         }
     }
 }
