@@ -1,6 +1,9 @@
+
 ﻿using ProductManagementSystem.Services;
 using ProductManagementSystem.Views;
 using System.Windows;
+
+
 
 
 namespace ProductManagementSystem
@@ -17,7 +20,8 @@ namespace ProductManagementSystem
 
         private void btnProducts_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Модуль 'Управление товарами' в разработке", "Информация");
+            var productsWindow = new ProductsWindow(productService);
+            productsWindow.ShowDialog();
         }
 
         private void btnStatistics_Click(object sender, RoutedEventArgs e)

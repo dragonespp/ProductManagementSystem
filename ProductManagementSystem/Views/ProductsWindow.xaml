@@ -1,0 +1,73 @@
+﻿<Window x:Class="ProductManagementSystem.Views.ProductsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Управление товарами" Height="600" Width="900"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Форма добавления/редактирования -->
+        <GroupBox Header="Информация о товаре" Grid.Row="0" Padding="10" Margin="0,0,0,15">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Название:" Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Center"/>
+                <TextBox x:Name="txtName" Grid.Row="0" Grid.Column="1" Margin="5" Height="25"/>
+
+                <TextBlock Text="Категория:" Grid.Row="0" Grid.Column="2" Margin="5" VerticalAlignment="Center"/>
+                <TextBox x:Name="txtCategory" Grid.Row="0" Grid.Column="3" Margin="5" Height="25"/>
+
+                <TextBlock Text="Цена:" Grid.Row="1" Grid.Column="0" Margin="5" VerticalAlignment="Center"/>
+                <TextBox x:Name="txtPrice" Grid.Row="1" Grid.Column="1" Margin="5" Height="25"/>
+
+                <TextBlock Text="Количество:" Grid.Row="1" Grid.Column="2" Margin="5" VerticalAlignment="Center"/>
+                <TextBox x:Name="txtQuantity" Grid.Row="1" Grid.Column="3" Margin="5" Height="25"/>
+
+                <StackPanel Grid.Row="2" Grid.ColumnSpan="4" Orientation="Horizontal" 
+                            HorizontalAlignment="Center" Margin="0,15,0,0">
+                    <Button x:Name="btnAdd" Content="Добавить товар" Width="130" Height="35" 
+                            Margin="5" Click="btnAdd_Click" Background="#4CAF50" Foreground="White" FontWeight="Bold"/>
+                    <Button x:Name="btnUpdate" Content="Обновить товар" Width="130" Height="35" 
+                            Margin="5" Click="btnUpdate_Click" Background="#2196F3" Foreground="White" FontWeight="Bold" IsEnabled="False"/>
+                    <Button x:Name="btnClear" Content="Очистить форму" Width="130" Height="35" 
+                            Margin="5" Click="btnClear_Click" Background="#9E9E9E" Foreground="White"/>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+
+        <!-- Список товаров -->
+        <GroupBox Header="Список товаров" Grid.Row="1">
+            <DataGrid x:Name="dgProducts" AutoGenerateColumns="False" 
+                      IsReadOnly="True" SelectionMode="Single" 
+                      SelectionChanged="dgProducts_SelectionChanged"
+                      AlternatingRowBackground="#F5F5F5">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding ProductID}" Width="60"/>
+                    <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="*"/>
+                    <DataGridTextColumn Header="Категория" Binding="{Binding Category}" Width="150"/>
+                    <DataGridTextColumn Header="Цена (₽)" Binding="{Binding Price, StringFormat='{}{0:F2}'}" Width="100"/>
+                    <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" Width="100"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+
+        <!-- Кнопка удаления -->
+        <Button x:Name="btnDelete" Content="Удалить выбранный товар" Grid.Row="2" 
+                Width="220" Height="40" Margin="0,15,0,0" Click="btnDelete_Click"
+                Background="#F44336" Foreground="White" FontWeight="Bold" IsEnabled="False"/>
+    </Grid>
+</Window>
