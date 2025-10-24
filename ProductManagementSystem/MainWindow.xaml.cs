@@ -1,28 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using ProductManagementSystem.Services;
+
 
 namespace ProductManagementSystem
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        private ProductService productService;
+
         public MainWindow()
         {
             InitializeComponent();
+            productService = new ProductService();
+        }
+
+        private void btnProducts_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Модуль 'Управление товарами' в разработке", "Информация");
+        }
+
+        private void btnStatistics_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Модуль 'Статистика' в разработке", "Информация");
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Модуль 'Поиск' в разработке", "Информация");
         }
     }
 }
